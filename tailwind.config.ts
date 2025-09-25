@@ -57,6 +57,16 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Literary-specific colors
+        "book-spine": "hsl(var(--book-spine))",
+        "book-page": "hsl(var(--book-page))",
+        "reading-progress": "hsl(var(--reading-progress))",
+        completed: "hsl(var(--completed))",
+      },
+      backgroundImage: {
+        "gradient-hero": "var(--gradient-hero)",
+        "gradient-card": "var(--gradient-card)",
+        "gradient-progress": "var(--gradient-progress)",
       },
       borderRadius: {
         lg: "var(--radius)",
