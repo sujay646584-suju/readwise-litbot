@@ -1,73 +1,78 @@
-# Welcome to your Lovable project
+# 📚 Readwise LitBot
 
-## Project info
+A **Book Reading Tracker with Literature Bot**.  
+This app helps you track reading progress across multiple books and interact with an AI-powered chatbot that can discuss book themes, authors, and suggestions.
 
-**URL**: https://lovable.dev/projects/f8f666b6-2c15-4e2e-bd41-8d6d5760a8d2
+---
 
-## How can I edit this code?
+## 📖 About This Project
 
-There are several ways of editing your application.
+**Readwise LitBot** combines productivity with fun. It allows you to manage your reading list and chat with an AI about literature.  
 
-**Use Lovable**
+### 🔹 Features
+- **Book Management (CRUD)** → Add, update, or remove books.  
+- **Reading Progress Tracking** → Track percentage or chapters read.  
+- **Literature Chatbot** → Ask about summaries, authors, themes, or get book suggestions.  
+- **Modern UI** → Built with React, TailwindCSS, and shadcn-ui for a sleek, responsive interface.  
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f8f666b6-2c15-4e2e-bd41-8d6d5760a8d2) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## ⚙️ How It Works
 
-**Use your preferred IDE**
+1. **Add Books** → Enter details like title, author, and description.  
+2. **Update Progress** → Log chapters or percentage read.  
+3. **Chat with LitBot** → Ask book-related questions:
+   - "Summarize this book."  
+   - "Tell me about the author."  
+   - "Suggest a similar book."  
+4. **Dashboard View** → See all your books and progress at a glance.  
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🛠️ Installation & Setup
 
-Follow these steps:
+To run locally, make sure you have **Node.js** and **npm** installed.  
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Step 1: Clone the repository
+git clone https://github.com/sujay646584-suju/readwise-litbot.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Step 2: Navigate into the project folder
+cd readwise-litbot
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Step 3: Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 4: Start the development server
 npm run dev
-```
+Your app will start at:
+👉 http://localhost:5173 (Vite default port)
 
-**Edit a file directly in GitHub**
+🌐 Deployment
+You can deploy this project to platforms like:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Vercel
 
-**Use GitHub Codespaces**
+Netlify
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+GitHub Pages
 
-## What technologies are used for this project?
+Example for Vercel:
 
-This project is built with:
+sh
+Copy code
+# Install Vercel CLI
+npm i -g vercel
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Deploy the project
+vercel
+🧑‍💻 Tech Stack
+Vite – Fast build tool
 
-## How can I deploy this project?
+React – UI framework
 
-Simply open [Lovable](https://lovable.dev/projects/f8f666b6-2c15-4e2e-bd41-8d6d5760a8d2) and click on Share -> Publish.
+TypeScript – Type safety
 
-## Can I connect a custom domain to my Lovable project?
+shadcn-ui – UI components
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Tailwind CSS – Styling
