@@ -91,6 +91,30 @@ const BookLibrary = () => {
     fetchBooks();
   }, []);
 
+  // Add real-time listener for new books
+  useEffect(() => {
+    const channel = supabase
+      .channel('books-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'books'
+        },
+        (payload) => {
+          console.log('New book added:', payload);
+          // Refetch books when a new one is added
+          fetchBooks();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
   const handleBookAdded = () => {
     setShowAddForm(false);
     fetchBooks();
