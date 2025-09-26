@@ -37,29 +37,49 @@ const BookLibrary = () => {
   const fetchBooks = async () => {
     try {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      if (!user) {
+        console.log("No authenticated user found");
+        return;
+      }
 
+      console.log("Fetching books for user:", user.id);
       const { data: booksData, error: booksError } = await supabase
         .from('books')
         .select('*')
         .eq('user_id', user.id)
         .order('created_at', { ascending: false });
 
-      if (booksError) throw booksError;
+      if (booksError) {
+        console.error("Books fetch error:", booksError);
+        throw booksError;
+      }
 
       const { data: progressData, error: progressError } = await supabase
         .from('reading_progress')
         .select('*')
         .eq('user_id', user.id);
 
-      if (progressError) throw progressError;
+      if (progressError) {
+        console.error("Progress fetch error:", progressError);
+        throw progressError;
+      }
 
+      console.log("Fetched books:", booksData);
+      console.log("Fetched progress:", progressData);
       setBooks(booksData || []);
       setProgress(progressData || []);
+      
+      if (booksData && booksData.length > 0) {
+        toast({
+          title: "Library loaded",
+          description: `Found ${booksData.length} books in your library`,
+        });
+      }
     } catch (error: any) {
+      console.error("Error fetching books:", error);
       toast({
         title: "Error",
-        description: "Failed to load books",
+        description: "Failed to load books: " + error.message,
         variant: "destructive",
       });
     } finally {

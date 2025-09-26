@@ -45,6 +45,7 @@ const AddBookForm = ({ onBookAdded, onCancel }: AddBookFormProps) => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error('No authenticated user');
 
+      console.log("Adding book for user:", user.id);
       const bookData = {
         user_id: user.id,
         title: formData.title.trim(),
@@ -57,22 +58,42 @@ const AddBookForm = ({ onBookAdded, onCancel }: AddBookFormProps) => {
         cover_url: formData.cover_url.trim() || bookCover2
       };
 
-      const { error } = await supabase
+      console.log("Book data to insert:", bookData);
+
+      const { data, error } = await supabase
         .from('books')
-        .insert(bookData);
+        .insert(bookData)
+        .select();
 
-      if (error) throw error;
+      if (error) {
+        console.error("Insert error:", error);
+        throw error;
+      }
 
+      console.log("Book inserted successfully:", data);
       toast({
         title: "Success!",
-        description: "Book added to your library",
+        description: `"${formData.title}" has been added to your library`,
+      });
+
+      // Reset form
+      setFormData({
+        title: '',
+        author: '',
+        total_pages: '',
+        isbn: '',
+        description: '',
+        genre: '',
+        published_year: '',
+        cover_url: ''
       });
 
       onBookAdded();
     } catch (error: any) {
+      console.error("Error adding book:", error);
       toast({
         title: "Error",
-        description: error.message,
+        description: "Failed to add book: " + error.message,
         variant: "destructive",
       });
     } finally {
